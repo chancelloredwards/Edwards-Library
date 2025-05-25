@@ -1,22 +1,33 @@
 name: Deploy to GitHub Pages
+
 on:
   push:
     branches: [master]
+  workflow_dispatch:    # optional manual trigger
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - run: npm ci
-      - run: npm run build
+
+      # Install dependencies in the nested /pages folder
+      - run: npm ci --prefix pages
+
+      # Build the Vite app inside /pages
+      - run: npm run build --prefix pages
+
       - uses: actions/configure-pages@v4
+
+      # Upload the build output from /pages/dist
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: pages/dist
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
