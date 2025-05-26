@@ -1,20 +1,20 @@
 ﻿/* eslint-disable no-unused-vars */
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Document, Page, pdfjs } from 'react-pdf';
-import { useEffect } from 'react';
 
-// Tell pdf.js where its worker lives in the Vite bundle
+// 🧩  Tell pdf.js where its worker lives **inside your Vite bundle**
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.min.js',
-    import.meta.url,
+    import.meta.url,          // resolves to the final /assets/… path
 ).toString();
 
 export default function PdfModal({ paper, onClose }) {
     // Close on ESC
     useEffect(() => {
-        const handler = e => { if (e.key === 'Escape') onClose(); };
-        window.addEventListener('keydown', handler);
-        return () => window.removeEventListener('keydown', handler);
+        const h = e => { if (e.key === 'Escape') onClose(); };
+        window.addEventListener('keydown', h);
+        return () => window.removeEventListener('keydown', h);
     }, [onClose]);
 
     if (!paper) return null;
@@ -36,11 +36,18 @@ export default function PdfModal({ paper, onClose }) {
                     onClick={e => e.stopPropagation()}
                 >
                     <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-lg font-semibold mr-4 flex-1 line-clamp-1">{paper.title}</h2>
-                        <button onClick={onClose} className="text-gray-500 hover:text-gray-800">✕</button>
+                        <h2 className="text-lg font-semibold mr-4 flex-1 line-clamp-1">
+                            {paper.title}
+                        </h2>
+                        <button
+                            onClick={onClose}
+                            className="text-gray-500 hover:text-gray-800"
+                        >
+                            ✕
+                        </button>
                     </div>
 
-                    {/* Render the first page at 800 px width; tweak as needed */}
+                    {/* Render first page at 800 px; tweak as needed */}
                     <Document file={paper.pdfUrl} className="flex flex-col items-center gap-8">
                         <Page pageNumber={1} width={800} />
                     </Document>
