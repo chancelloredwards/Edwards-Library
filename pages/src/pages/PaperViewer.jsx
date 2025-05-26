@@ -1,12 +1,13 @@
-﻿import { useState } from 'react';
+﻿/* eslint-disable no-useless-escape */
+import { useState } from 'react';
 import PdfModal from '../components/PdfModal';
 
 // Single‑book metadata (replace with real details)
 const book = {
-    title: 'My Book Title',
-    description: 'A concise description of my book goes here—keep it to one or two sentences so readers know what to expect.',
-    pdfUrl: '/book/my_book.pdf',
-    coverUrl: '/book/cover.jpg',
+    title: 'Orgins',
+    description: 'Long ago, there lived the benders.',
+    pdfUrl: '"C:\Users\chanc\source\repos\pages\pages\public\bookwork\Daysbefore.pdf"',
+    coverUrl: '"C:\Users\chanc\source\repos\pages\pages\public\bookwork\coverart.jpg"',
 };
 
 export default function PaperViewer() {
