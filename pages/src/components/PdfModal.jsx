@@ -2,7 +2,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { useEffect } from 'react';
+import workerSrc from 'pdfjs-dist/build/pdf.worker.min.js?url';
 
+pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 export default function PdfModal({ paper, onClose }) {
