@@ -11,8 +11,9 @@ const book = {
     title: 'Orgins',
     description: 'Long ago, there lived the benders.',
     // Assets placed in pages/public/bookwork/
-    pdfUrl: `${base}bookwork/Daysbefore.pdf`,
+    pdfUrl: `${base}\bookwork\Daysbefore.docx`,
     coverUrl: `${base}bookwork/coverart.jpg`,
+    
 };
 
 export default function PaperViewer() {
