@@ -3,10 +3,9 @@ import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Document, Page, pdfjs } from 'react-pdf';
 
-// 👉  Vite will copy the worker into /assets and give us the final URL
-import workerSrc from 'pdfjs-dist/build/pdf.worker.min.js?worker&url';
-
-pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
+// Use the official worker that matches pdfjs‑dist 4.8.69
+pdfjs.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.8.69/pdf.worker.min.js';
 
 export default function PdfModal({ paper, onClose }) {
     // Close on ESC
@@ -43,6 +42,7 @@ export default function PdfModal({ paper, onClose }) {
                         </button>
                     </div>
 
+                    {/* Render first page at 800 px width; tweak as needed */}
                     <Document file={paper.pdfUrl} className="flex flex-col items-center gap-8">
                         <Page pageNumber={1} width={800} />
                     </Document>
@@ -51,4 +51,3 @@ export default function PdfModal({ paper, onClose }) {
         </AnimatePresence>
     );
 }
-
