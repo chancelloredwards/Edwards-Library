@@ -3,9 +3,11 @@ import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Document, Page, pdfjs } from 'react-pdf';
 
-// Use the official worker that matches pdfjs‑dist 4.8.69
-pdfjs.GlobalWorkerOptions.workerSrc =
-    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.8.69/pdf.worker.min.js';
+// ①  Ask Vite to bundle the worker and give us its final URL
+//     (works in dev and on GitHub Pages)
+import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?worker&url';  // <- note .mjs
+
+pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
 
 export default function PdfModal({ paper, onClose }) {
     // Close on ESC
@@ -31,7 +33,7 @@ export default function PdfModal({ paper, onClose }) {
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.9, opacity: 0 }}
-                    onClick={e => e.stopPropagation()}
+                    onClick={(e) => e.stopPropagation()}
                 >
                     <div className="flex justify-between items-center mb-4">
                         <h2 className="text-lg font-semibold mr-4 flex-1 line-clamp-1">
@@ -42,7 +44,6 @@ export default function PdfModal({ paper, onClose }) {
                         </button>
                     </div>
 
-                    {/* Render first page at 800 px width; tweak as needed */}
                     <Document file={paper.pdfUrl} className="flex flex-col items-center gap-8">
                         <Page pageNumber={1} width={800} />
                     </Document>
@@ -51,3 +52,4 @@ export default function PdfModal({ paper, onClose }) {
         </AnimatePresence>
     );
 }
+
