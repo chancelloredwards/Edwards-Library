@@ -11,7 +11,7 @@ const book = {
     title: 'Orgins',
     description: 'Long ago, there lived the benders.',
     // Assets placed in pages/public/bookwork/
-    pdfUrl: `${base}\bookwork\Daysbefore.docx`,
+    pdfUrl: `${base}\bookwork\Daysbefore.pdf`,
     coverUrl: `${base}bookwork/coverart.jpg`,
     
 };
