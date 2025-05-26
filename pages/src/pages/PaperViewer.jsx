@@ -2,12 +2,17 @@
 import { useState } from 'react';
 import PdfModal from '../components/PdfModal';
 
-// Single‑book metadata (replace with real details)
+// Grab the base path that Vite injects.
+// • In dev it’s "/".
+// • In production (GitHub Pages) it’s "/Edwards-Library/"   ← matches vite.config.js`base`.
+const base = import.meta.env.BASE_URL;
+
 const book = {
     title: 'Orgins',
     description: 'Long ago, there lived the benders.',
-    pdfUrl: '"C:\Users\chanc\source\repos\pages\pages\public\bookwork\Daysbefore.pdf"',
-    coverUrl: '"C:\Users\chanc\source\repos\pages\pages\public\bookwork\coverart.jpg"',
+    // Assets placed in pages/public/bookwork/
+    pdfUrl: `${base}bookwork/Daysbefore.pdf`,
+    coverUrl: `${base}bookwork/coverart.jpg`,
 };
 
 export default function PaperViewer() {
@@ -26,7 +31,7 @@ export default function PaperViewer() {
                 onClick={() => setOpen(true)}
                 className="bg-blue-600 text-white px-6 py-3 rounded-xl shadow hover:bg-blue-700 transition"
             >
-                Read Book
+                Read Book
             </button>
 
             {/* Full‑screen PDF reader */}
@@ -34,3 +39,4 @@ export default function PaperViewer() {
         </section>
     );
 }
+
