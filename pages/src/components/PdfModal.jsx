@@ -3,12 +3,13 @@ import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Document, Page, pdfjs } from 'react-pdf';
 
-// ✅  Ask Vite for the final URL of the bundled worker
-import workerSrc from 'pdfjs-dist/build/pdf.worker.min.js?url';
+// 👉  Vite will copy the worker into /assets and give us the final URL
+import workerSrc from 'pdfjs-dist/build/pdf.worker.min.js?worker&url';
 
 pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
 
 export default function PdfModal({ paper, onClose }) {
+    // Close on ESC
     useEffect(() => {
         const h = e => { if (e.key === 'Escape') onClose(); };
         window.addEventListener('keydown', h);
@@ -37,7 +38,9 @@ export default function PdfModal({ paper, onClose }) {
                         <h2 className="text-lg font-semibold mr-4 flex-1 line-clamp-1">
                             {paper.title}
                         </h2>
-                        <button onClick={onClose} className="text-gray-500 hover:text-gray-800">✕</button>
+                        <button onClick={onClose} className="text-gray-500 hover:text-gray-800">
+                            ✕
+                        </button>
                     </div>
 
                     <Document file={paper.pdfUrl} className="flex flex-col items-center gap-8">
@@ -48,3 +51,4 @@ export default function PdfModal({ paper, onClose }) {
         </AnimatePresence>
     );
 }
+
