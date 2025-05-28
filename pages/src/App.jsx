@@ -1,9 +1,11 @@
-﻿// src/App.jsx
+﻿// 🛠️ Fix: correct import paths (Home.jsx, PaperViewer.jsx)
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthProvider';
 import RequireAuth from './components/RequireAuth';
-import Home from '../Home';
-import PaperViewer from '..paperviewer';
+
+// pages
+import Home from './pages/Home.jsx';
+import PaperViewer from './pages/paperviewer.jsx';
 
 export default function App() {
     return (
@@ -26,3 +28,4 @@ export default function App() {
         </AuthProvider>
     );
 }
+
