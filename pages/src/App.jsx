@@ -1,11 +1,10 @@
-﻿// 🛠️ Fix: correct import paths (Home.jsx, PaperViewer.jsx)
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+﻿import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthProvider';
 import RequireAuth from './components/RequireAuth';
 
-// pages
-import Home from '../pages/Home.jsx';
-import PaperViewer from '../pages/paperviewer.jsx';
+// Corrected paths for pages
+import Home from './pages/Home.jsx';
+import PaperViewer from './pages/paperviewer.jsx';
 
 export default function App() {
     return (
