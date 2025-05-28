@@ -1,3 +1,4 @@
+ï»¿// âœ¨ New component: Home.jsx
 import { Link } from 'react-router-dom';
 
 export default function Home() {
@@ -32,7 +33,7 @@ export default function Home() {
         <div className="min-h-screen font-serif bg-[url('/paper-texture.png')] bg-fixed bg-repeat text-gray-800">
             <header className="w-full bg-burgundy-900 text-white shadow-md">
                 <nav className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-                    <div className="text-2xl font-bold tracking-tight">Edwards Library</div>
+                    <div className="text-2xl font-bold tracking-tight">EdwardsÂ Library</div>
                     <ul className="hidden md:flex gap-8 text-sm font-medium">
                         {[
                             { label: 'Catalog', href: '/catalog' },
@@ -84,8 +85,9 @@ export default function Home() {
             </section>
 
             <footer className="bg-burgundy-900 py-8 text-center text-sm text-burgundy-100">
-                © 2025 Edwards Library. Curating stories since 1873.
+                Â©Â 2025Â EdwardsÂ Library. Curating stories sinceÂ 1873.
             </footer>
         </div>
     );
 }
+
