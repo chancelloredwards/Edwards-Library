@@ -1,7 +1,6 @@
-// src/pages/Home.jsx
 import { Link } from 'react-router-dom';
 
-export default function EdwardsLibraryLanding() {
+export default function Home() {
     const cards = [
         {
             id: 1,
@@ -67,7 +66,11 @@ export default function EdwardsLibraryLanding() {
             <section className="max-w-7xl mx-auto py-24 px-6 grid gap-14 md:grid-cols-3">
                 {cards.map((c) => (
                     <div key={c.id} className="group text-center">
-                        <img src={c.img} alt={c.title} className="mx-auto w-full max-w-xs rounded-lg shadow-md group-hover:shadow-xl transition" />
+                        <img
+                            src={c.img}
+                            alt={c.title}
+                            className="mx-auto w-full max-w-xs rounded-lg shadow-md group-hover:shadow-xl transition"
+                        />
                         <h3 className="mt-6 text-2xl font-semibold text-burgundy-900">{c.title}</h3>
                         <p className="text-burgundy-700 mt-2 mb-6 px-4 leading-relaxed">{c.tagline}</p>
                         <Link
