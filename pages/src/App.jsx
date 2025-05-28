@@ -4,8 +4,8 @@ import { AuthProvider } from './contexts/AuthProvider';
 import RequireAuth from './components/RequireAuth';
 
 // pages
-import Home from './pages/Home.jsx';
-import PaperViewer from './pages/paperviewer.jsx';
+import Home from '../pages/Home.jsx';
+import PaperViewer from '../pages/paperviewer.jsx';
 
 export default function App() {
     return (
