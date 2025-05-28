@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthProvider';
 import RequireAuth from './components/RequireAuth';
 import Home from '../Home';
-import PaperViewer from './pages/paperviewer';
+import PaperViewer from '..paperviewer';
 
 export default function App() {
     return (
