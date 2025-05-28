@@ -1,6 +1,8 @@
-﻿import { BrowserRouter, Routes, Route } from 'react-router-dom';
+﻿// src/App.jsx
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthProvider';
 import RequireAuth from './components/RequireAuth';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import PaperViewer from './pages/PaperViewer';
 
@@ -9,10 +11,8 @@ export default function App() {
         <AuthProvider>
             <BrowserRouter>
                 <Routes>
-                    {/* Public route */}
+                    <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
-
-                    {/* Protected route – only visible to signed‑in users */}
                     <Route
                         path="/papers/*"
                         element={
@@ -21,9 +21,7 @@ export default function App() {
                             </RequireAuth>
                         }
                     />
-
-                    {/* Fallback: redirect all unknown paths to login */}
-                    <Route path="*" element={<Login />} />
+                    <Route path="*" element={<Home />} />
                 </Routes>
             </BrowserRouter>
         </AuthProvider>
