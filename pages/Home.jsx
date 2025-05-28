@@ -31,6 +31,7 @@ export default function Home() {
 
     return (
         <div className="min-h-screen font-serif bg-[url('/paper-texture.png')] bg-fixed bg-repeat text-gray-800">
+            {/* Navigation */}
             <header className="w-full bg-burgundy-900 text-white shadow-md">
                 <nav className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
                     <div className="text-2xl font-bold tracking-tight">Edwards Library</div>
@@ -49,6 +50,7 @@ export default function Home() {
                 </nav>
             </header>
 
+            {/* Hero */}
             <section className="text-center py-20 px-6 bg-burgundy-50/60">
                 <h1 className="text-4xl md:text-5xl font-bold mb-4 text-burgundy-900 drop-shadow-sm">
                     Discover Literature that Moves You
@@ -64,6 +66,7 @@ export default function Home() {
                 </Link>
             </section>
 
+            {/* Feature Cards */}
             <section className="max-w-7xl mx-auto py-24 px-6 grid gap-14 md:grid-cols-3">
                 {cards.map((c) => (
                     <div key={c.id} className="group text-center">
@@ -84,6 +87,7 @@ export default function Home() {
                 ))}
             </section>
 
+            {/* Footer */}
             <footer className="bg-burgundy-900 py-8 text-center text-sm text-burgundy-100">
                 © 2025 Edwards Library. Curating stories since 1873.
             </footer>
@@ -91,5 +95,4 @@ export default function Home() {
     );
 }
 
-}
 
